@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7icbhwf74h0k"]
+
+[ext_resource type="Script" path="res://scripts/playerr.gd" id="1_jpvl1"]
+[ext_resource type="Texture2D" uid="uid://b8muvh6b0ekrn" path="res://assets/spr_idk2.png" id="2_ubqsl"]
+[ext_resource type="Texture2D" uid="uid://bot8851iijojx" path="res://assets/spr_bat.png" id="3_5qngd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4alnb"]
+radius = 14.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16tpv"]
+radius = 48.7692
+height = 99.5385
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(-0.769231, -0.769231)
+input_pickable = true
+script = ExtResource("1_jpvl1")
+
+[node name="scale_hover" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(0.269237, -0.230772)
+scale = Vector2(1.85938, 1.875)
+texture = ExtResource("2_ubqsl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 19.0
+offset_bottom = 19.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(0.162066, 0.162066, 0.162066, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 17.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(-21, -19.86)
+scale = Vector2(1.165, 1.165)
+points = PackedVector2Array(1.71674, 0.738198, 32.618, 31.6395)
+width = 0.365
+default_color = Color(0.992235, 0, 0.364686, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.769231, -0.230769)
+shape = SubResource("CapsuleShape2D_4alnb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_16tpv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(26.7692, 12.7692)
+
+[node name="SprBat" type="Sprite2D" parent="."]
+position = Vector2(0.769231, 2.76923)
+scale = Vector2(1.345, 1.345)
+texture = ExtResource("3_5qngd")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

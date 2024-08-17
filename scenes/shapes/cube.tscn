@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhb2tgi7hp0v"]
+
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_h5adc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p5p4"]
+size = Vector2(40, 40)
+
+[node name="cube" type="Node2D"]
+script = ExtResource("1_h5adc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.162066, 0.162066, 0.162066, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-21, -19.86)
+scale = Vector2(1.165, 1.165)
+points = PackedVector2Array(2.57511, 1.59657, 33.4764, 32.4979)
+width = 0.365
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(-21, -19.86)
+scale = Vector2(1.165, 1.165)
+points = PackedVector2Array(2.57511, 32.4979, 33.4764, 1.59657)
+width = 0.365
+default_color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.769231, -0.769231)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.769231, 0.769231)
+shape = SubResource("RectangleShape2D_4p5p4")
