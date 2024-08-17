@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://djhb2tgi7hp0v"]
+[gd_scene load_steps=6 format=3 uid="uid://djhb2tgi7hp0v"]
 
 [ext_resource type="Script" path="res://scripts/cube.gd" id="1_h5adc"]
 [ext_resource type="Script" path="res://scripts/interaction.gd" id="2_82ccn"]
+[ext_resource type="Script" path="res://scenes/shapes/cube_move.gd" id="3_65mft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fprnd"]
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soc33"]
-size = Vector2(40, 40)
+size = Vector2(49, 38)
 
 [node name="cube" type="Node2D"]
 script = ExtResource("1_h5adc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_65mft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_fprnd")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,7 +32,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="CharacterBody2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.162066, 0.162066, 0.162066, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="ColorRect3" type="ColorRect" parent="CharacterBody2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -49,27 +59,31 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="CharacterBody2D"]
 position = Vector2(-21, -19.86)
 scale = Vector2(1.165, 1.165)
 points = PackedVector2Array(2.57511, 1.59657, 33.4764, 32.4979)
 width = 0.365
 default_color = Color(0, 0, 0, 1)
 
-[node name="Line2D2" type="Line2D" parent="."]
+[node name="Line2D2" type="Line2D" parent="CharacterBody2D"]
 position = Vector2(-21, -19.86)
 scale = Vector2(1.165, 1.165)
 points = PackedVector2Array(2.57511, 32.4979, 33.4764, 1.59657)
 width = 0.365
 default_color = Color(0, 0, 0, 1)
 
-[node name="interaction" type="Node2D" parent="."]
+[node name="interaction" type="Node2D" parent="CharacterBody2D"]
 script = ExtResource("2_82ccn")
 type = "cube"
 
-[node name="interact" type="Area2D" parent="interaction"]
+[node name="interact" type="Area2D" parent="CharacterBody2D/interaction"]
 collision_layer = 32
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction/interact"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/interaction/interact"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_soc33")
+
+[connection signal="body_entered" from="CharacterBody2D/interaction/interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/interaction/interact" to="." method="_on_interact_body_exited"]

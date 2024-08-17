@@ -7,7 +7,7 @@ var JUMP_VELOCITY = -400.0
 
 var velocities_light_to_heavy = [-450, -400, -300, -200]
 var velocities = [-200, -300, -400, -450]
-var speeds = [200, 300, 200, 100]
+var speeds = [400, 300, 200, 100]
 var scales = [.5, 1, 2, 3]
 var current_scale = 1
 var can_scale = false
@@ -18,6 +18,7 @@ var bombs = 0
 
 var can_grow = true
 var can_shrink = true
+var moving = true
 
 var start_pos = Vector2()
 
@@ -40,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	moving = direction
 	if direction:
 		velocity.x = direction * SPEED
 	else:
