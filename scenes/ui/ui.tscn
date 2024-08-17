@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxtgdy5co6qao"]
+[gd_scene load_steps=7 format=3 uid="uid://cxtgdy5co6qao"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_d8te6"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="2_aus8c"]
+[ext_resource type="Texture2D" uid="uid://u28slq2jjdk8" path="res://assets/shrink_potion.png" id="3_1u0dx"]
+[ext_resource type="Texture2D" uid="uid://duduocaanm2p7" path="res://assets/spr_bomb_deact.png" id="4_bws55"]
+[ext_resource type="Texture2D" uid="uid://w4q2i5xvhc7w" path="res://assets/grow_potion.png" id="4_nkuih"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhu2a"]
+font_size = 13
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -10,3 +17,146 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d8te6")
+
+[node name="hud" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("2_aus8c")
+
+[node name="elements" type="HBoxContainer" parent="hud"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="s_potion" type="Control" parent="hud/elements"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="hud/elements/s_potion"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 64.0
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="hud/elements/s_potion"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 45.0
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="ShrinkPotion" type="Sprite2D" parent="hud/elements/s_potion"]
+position = Vector2(24, 27)
+texture = ExtResource("3_1u0dx")
+
+[node name="amount" type="Label" parent="hud/elements/s_potion"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+text = "0"
+label_settings = SubResource("LabelSettings_mhu2a")
+
+[node name="Label" type="Label" parent="hud/elements/s_potion"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 42.0
+offset_right = 30.0
+offset_bottom = 65.0
+text = "1"
+
+[node name="g_potion" type="Control" parent="hud/elements"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="hud/elements/g_potion"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 63.0
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="hud/elements/g_potion"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 45.0
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="GrowPotion" type="Sprite2D" parent="hud/elements/g_potion"]
+position = Vector2(24, 27)
+texture = ExtResource("4_nkuih")
+
+[node name="amount" type="Label" parent="hud/elements/g_potion"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+text = "0"
+label_settings = SubResource("LabelSettings_mhu2a")
+
+[node name="Label2" type="Label" parent="hud/elements/g_potion"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 42.0
+offset_right = 29.0
+offset_bottom = 65.0
+text = "2
+"
+
+[node name="bomb" type="Control" parent="hud/elements"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="hud/elements/bomb"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 63.0
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="hud/elements/bomb"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 45.0
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="amount" type="Label" parent="hud/elements/bomb"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+text = "0"
+label_settings = SubResource("LabelSettings_mhu2a")
+
+[node name="SprBombDeact" type="Sprite2D" parent="hud/elements/bomb"]
+position = Vector2(24, 29)
+texture = ExtResource("4_bws55")
+
+[node name="Label3" type="Label" parent="hud/elements/bomb"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 42.0
+offset_right = 30.0
+offset_bottom = 65.0
+text = "3"

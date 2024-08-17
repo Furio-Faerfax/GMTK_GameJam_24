@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8rllqjb5r4e7"]
+[gd_scene load_steps=8 format=3 uid="uid://b8rllqjb5r4e7"]
 
 [ext_resource type="PackedScene" uid="uid://djhb2tgi7hp0v" path="res://scenes/shapes/cube.tscn" id="1_mhu8t"]
 [ext_resource type="PackedScene" uid="uid://b7icbhwf74h0k" path="res://scenes/shapes/player.tscn" id="1_vah6m"]
 [ext_resource type="PackedScene" uid="uid://iwnyog1v01ik" path="res://scenes/shapes/ground.tscn" id="2_3505p"]
 [ext_resource type="PackedScene" uid="uid://cxtgdy5co6qao" path="res://scenes/ui/ui.tscn" id="4_ld6sy"]
 [ext_resource type="PackedScene" uid="uid://bxgqi3qscp1jt" path="res://scenes/shapes/wall.tscn" id="4_rxu6h"]
+[ext_resource type="PackedScene" uid="uid://epk3djhkbmo2" path="res://scenes/items/potion.tscn" id="6_epq0k"]
+[ext_resource type="PackedScene" uid="uid://datd2rbmksmy5" path="res://scenes/items/bomb.tscn" id="7_x738k"]
 
 [node name="world" type="Node2D"]
+
+[node name="ui" parent="." instance=ExtResource("4_ld6sy")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 71.0
+offset_right = 71.0
+grow_vertical = 0
 
 [node name="player" parent="." instance=ExtResource("1_vah6m")]
 position = Vector2(121.231, 131.231)
@@ -79,8 +88,6 @@ position = Vector2(954, 427)
 [node name="ground22" parent="ground" instance=ExtResource("2_3505p")]
 position = Vector2(994, 427)
 
-[node name="ui" parent="." instance=ExtResource("4_ld6sy")]
-
 [node name="wall" parent="." instance=ExtResource("4_rxu6h")]
 position = Vector2(321, 363)
 
@@ -98,3 +105,15 @@ position = Vector2(321, 323)
 
 [node name="cube" parent="." instance=ExtResource("1_mhu8t")]
 position = Vector2(221, 388)
+
+[node name="potion" parent="." instance=ExtResource("6_epq0k")]
+position = Vector2(258, 279)
+
+[node name="potion2" parent="." instance=ExtResource("6_epq0k")]
+position = Vector2(500, 358)
+shrink = false
+
+[node name="bomb" parent="." instance=ExtResource("7_x738k")]
+position = Vector2(605, 383)
+
+[editable path="ui"]

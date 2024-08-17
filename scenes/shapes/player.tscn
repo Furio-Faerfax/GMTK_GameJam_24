@@ -14,6 +14,8 @@ height = 99.5385
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(-0.769231, -0.769231)
+collision_layer = 5
+collision_mask = 9
 input_pickable = true
 script = ExtResource("1_jpvl1")
 
@@ -61,9 +63,9 @@ default_color = Color(0.992235, 0, 0.364686, 1)
 position = Vector2(0.769231, -0.230769)
 shape = SubResource("CapsuleShape2D_4alnb")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="debugMouseScale" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="debugMouseScale"]
 shape = SubResource("CapsuleShape2D_16tpv")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -74,8 +76,17 @@ position = Vector2(0.769231, 2.76923)
 scale = Vector2(1.345, 1.345)
 texture = ExtResource("3_5qngd")
 
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0.769231, -0.230769)
+shape = SubResource("CapsuleShape2D_4alnb")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="debugMouseScale" to="." method="_on_area_2d_area_entered"]
+[connection signal="mouse_entered" from="debugMouseScale" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="debugMouseScale" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="interaction_area" to="." method="_on_interaction_area_area_entered"]

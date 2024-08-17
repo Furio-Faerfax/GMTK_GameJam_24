@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u28slq2jjdk8"
-path="res://.godot/imported/spr_blue_potion.png-079c32adf5c69142e1c6e9732783f980.ctex"
+uid="uid://duduocaanm2p7"
+path="res://.godot/imported/spr_bomb_deact.png-c1ee5edda00602bd75d528be6275379d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spr_blue_potion.png"
-dest_files=["res://.godot/imported/spr_blue_potion.png-079c32adf5c69142e1c6e9732783f980.ctex"]
+source_file="res://assets/spr_bomb_deact.png"
+dest_files=["res://.godot/imported/spr_bomb_deact.png-c1ee5edda00602bd75d528be6275379d.ctex"]
 
 [params]
 

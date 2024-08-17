@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://datd2rbmksmy5"]
+
+[ext_resource type="Texture2D" uid="uid://duduocaanm2p7" path="res://assets/spr_bomb_deact.png" id="1_1dcee"]
+[ext_resource type="Script" path="res://scripts/interaction.gd" id="2_fesrm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v57wq"]
+radius = 8.0
+height = 16.0
+
+[node name="bomb" type="Node2D"]
+
+[node name="SprBombDeact" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_1dcee")
+
+[node name="interaction" type="Node2D" parent="."]
+script = ExtResource("2_fesrm")
+type = "bomb"
+
+[node name="interact" type="Area2D" parent="interaction"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction/interact"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_v57wq")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://djhb2tgi7hp0v"]
+[gd_scene load_steps=4 format=3 uid="uid://djhb2tgi7hp0v"]
 
 [ext_resource type="Script" path="res://scripts/cube.gd" id="1_h5adc"]
+[ext_resource type="Script" path="res://scripts/interaction.gd" id="2_82ccn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p5p4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soc33"]
 size = Vector2(40, 40)
 
 [node name="cube" type="Node2D"]
@@ -62,9 +63,13 @@ points = PackedVector2Array(2.57511, 32.4979, 33.4764, 1.59657)
 width = 0.365
 default_color = Color(0, 0, 0, 1)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-0.769231, -0.769231)
+[node name="interaction" type="Node2D" parent="."]
+script = ExtResource("2_82ccn")
+type = "cube"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.769231, 0.769231)
-shape = SubResource("RectangleShape2D_4p5p4")
+[node name="interact" type="Area2D" parent="interaction"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction/interact"]
+shape = SubResource("RectangleShape2D_soc33")
